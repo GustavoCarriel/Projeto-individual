@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>Cadastro | CARRIEL</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Carriel</h1>
+            <ul>
+                <li><a href="index.html">Champions League 2022</a></li>
+                <li><a href="sobre.html">Sobre mim</a></li>
+                <li><span>|</span></li>
+                <li><a href="cadastro.html" id="now">Cadastro</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="section">
+        <div class="box">
+            <div class="form">
+                <h1>Cadastro</h1>
+                <div class="formulario">
+                    <div class="inputBox">
+                        <i class='bx bxs-user'></i>
+                        <input type="text" id="nome_input" placeholder="Username">
+                    </div>
+                    <div class="inputBox">
+                        <i class='bx bxs-envelope'></i>
+                        <input type="text" id="email_input" placeholder="Email">
+                    </div>
+                    <div class="inputBox">
+                        <i class='bx bxs-lock'></i>
+                        <input type="text" id="senha_input" placeholder="Senha">
+                    </div>
+                    <div class="inputBox">
+                        <i class='bx bxs-lock'></i>
+                        <input type="text" id="confirmacao_senha_input" placeholder="Confirme senha">
+                    </div>
+                    <div class="inputBox">
+                        <button onclick="cadastrar()">Cadastrar <span></span></button>
+                    </div>
+                </div>
+                <p>Já possui um cadastro? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
