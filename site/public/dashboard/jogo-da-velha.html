@@ -8,7 +8,7 @@
     <script src="../js/jv.js"></script>
     <title>Jogo da velha | CARRIEL</title>
 </head>
-<body>
+<body onload="initialize()">
   <header>
     <nav>
         <h1>Carriel</h1>
@@ -18,32 +18,102 @@
             <div class="line3"></div>
         </div>
         <ul class="nav-list">
-            <li><a href="dashboard.html">Início</a></li>
+            <li><a href="jogos.html">Jogos</a></li>
             <li><a href="votacao.html">Votação</a></li>
-            <li><a href="#">Jogos</a></li>
             <li><a href="#">Mural</a></li>
         </ul>
     </nav>
 </header>
-  <div class='flex'>
-    <div class='p1'>Player 1: 0</div>
-    <h1 class='header'>Tic Tac Toe</h1>
-    <div class='p2'>Player 2: 0</div>
-  </div>
-  <div class='grid'>
-    <div class='space' id='one'></div>
-    <div class='space' id='two'></div>
-    <div class='space' id='three'></div>
-    <div class='space' id='four'></div>
-    <div class='space' id='five'></div>
-    <div class='space' id='six'></div>
-    <div class='space' id='seven'></div>
-    <div class='space' id='eight'></div>
-    <div class='space' id='nine'></div>
-  </div> 
-  
-  <div class='wrapper'>
-    <button class='reset'>Reset</button>
-  </div>
+    <main>
+      <h1>Jogo da Velha</h1>
+      <table id="table_game">
+        <tr><td class="td_game"><div id="cell0" onclick="cellClicked(this.id)" class="fixed"></div></td><td class="td_game"><div id="cell1" onclick="cellClicked(this.id)" class="fixed"></div></td><td class="td_game"><div id="cell2" onclick="cellClicked(this.id)" class="fixed"></div></td></tr>
+        <tr><td class="td_game"><div id="cell3" onclick="cellClicked(this.id)" class="fixed"></div></td><td class="td_game"><div id="cell4" onclick="cellClicked(this.id)" class="fixed"></div></td><td class="td_game"><div id="cell5" onclick="cellClicked(this.id)" class="fixed"></div></td></tr>
+        <tr><td class="td_game"><div id="cell6" onclick="cellClicked(this.id)" class="fixed"></div></td><td class="td_game"><div id="cell7" onclick="cellClicked(this.id)" class="fixed"></div></td><td class="td_game"><div id="cell8" onclick="cellClicked(this.id)" class="fixed"></div></td></tr>
+      </table>
+      <div id="restart" title="Start new game" onclick="restartGame(true)"><span style="vertical-align:top;position:relative;top:-10px;">#</span></div>
+      <table>
+        <tr><th class="th_list">Computador</th><th class="th_list" style="padding-right:10px;padding-left:10px">Empate</th><th class="th_list">Jogador</th></tr>
+        <tr><td class="td_list" id="computer_score">0</td><td class="td_list" style="padding-right:10px;padding-left:10px" id="tie_score">0</td><td class="td_list" id="player_score">0</td></tr>
+      </table>
+      <!-- The modal dialog for announcing the winner -->
+      <div id="winAnnounce" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('winAnnounce')">&times;</span>
+          <p id="winText"></p>
+        </div>
+      </div>
+      <!-- The dialog for getting feedback from the user -->
+      <div id="userFeedback" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <p id="questionText"></p>
+          <p><button id="yesBtn">Sim</button>&nbsp;<button id="noBtn">Não</button></p>
+        </div>
+      </div>
+      <!-- The options dialog -->
+      <div id="optionsDlg" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <h2>Como você gostaria de jogar?</h2>
+            <h3>Dificuldade:</h3>
+            <label><input type="radio" name="difficulty" id="r0" value="0">Fácil&nbsp;</label>
+            <label><input type="radio" name="difficulty" id="r1" value="1" checked>Difícil</label><br>
+            <h3>Jogar com o:</h3>
+            <label><input type="radio" name="player" id="rx" value="x" checked>X (começa)&nbsp;</label>
+            <label><input type="radio" name="player" id="ro" value="o">O<br></label>
+            <p><button id="okBtn" onclick="getOptions()">Jogar</button></p>
+        </div>
+      </div>
+    </main>
 </body>
 </html>
+
+<!-- SCRIPT PARA O MENU HAMBURGUER FUNCIONAR -->
+<script>
+    class MobileNavbar {
+    constructor(mobileMenu, navList, navLinks) {
+      this.mobileMenu = document.querySelector(mobileMenu);
+      this.navList = document.querySelector(navList);
+      this.navLinks = document.querySelectorAll(navLinks);
+      this.activeClass = "active";
+  
+      this.handleClick = this.handleClick.bind(this);
+    }
+  
+    animateLinks() {
+      this.navLinks.forEach((link, index) => {
+        link.style.animation
+          ? (link.style.animation = "")
+          : (link.style.animation = `navLinkFade 0.5s ease forwards ${
+              index / 7 + 0.3
+            }s`);
+      });
+    }
+  
+    handleClick() {
+      this.navList.classList.toggle(this.activeClass);
+      this.mobileMenu.classList.toggle(this.activeClass);
+      this.animateLinks();
+    }
+  
+    addClickEvent() {
+      this.mobileMenu.addEventListener("click", this.handleClick);
+    }
+  
+    init() {
+      if (this.mobileMenu) {
+        this.addClickEvent();
+      }
+      return this;
+    }
+  }
+  
+  const mobileNavbar = new MobileNavbar(
+    ".mobile-menu",
+    ".nav-list",
+    ".nav-list li",
+  );
+  mobileNavbar.init();
+</script>
