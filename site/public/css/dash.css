@@ -176,3 +176,30 @@ footer{
   padding: 30px 0;
   margin-top: 2%;
 }
+
+table, th, td{
+  border: 1px solid rgb(255, 255, 255);
+}
+table{
+  border-collapse: collapse;
+  width: 80%;
+  empty-cells: hide;
+}
+th, td{
+  padding: 15px;
+  border-spacing: 10px;
+}
+th{
+  height: 40px;
+  text-align: left;
+  height: 40px;
+  vertical-align: bottom;
+}
+tr:nth-child(odd){
+  background: #333;
+}
+tr:nth-child(1){
+  font-weight: 800;
+  font-size: 20px;
+  background-color: black;
+}

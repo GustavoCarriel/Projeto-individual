@@ -7,10 +7,10 @@
 }
 body{
     /* font-family: 'David Libre', serif; */
-    background-image: url('Nova pasta/champions.jpg');
+    background-image: url('../assets/champions.jpg');
     background-attachment: fixed;
     background-size: cover;
-    backdrop-filter: blur(10px);
+    backdrop-filter: brightness(45%);
     -webkit-backdrop-filter: blur(10px);
 }
 .parallax{
@@ -47,7 +47,7 @@ nav ul li a,span{
     letter-spacing: 1px;
     font-size: 16px;
     font-weight: 600;
-    padding: 10px 10px;
+    padding: 5px 10px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 nav ul li a:hover{
@@ -108,12 +108,12 @@ nav ul li a:hover{
     flex-direction: column;
     justify-content: end;
     color: #fff;
-    filter: drop-shadow(0 0 .4em #000);
+    padding-bottom: 40px;
     font-family: Raleway, Helvetica, sans-serif;
 }
 .banner h1{
     margin: 0 0 2% 10%;
-    font-size: 30px;
+    font-size: 40px;
 }
 .banner a{
     color: cadetblue;
@@ -198,6 +198,7 @@ main img{
 }
 .textos p{
     margin: 2%;
+    text-align: justify;
 }
 
 .textos a {
@@ -246,14 +247,44 @@ footer{
     font-family: Raleway, Helvetica, sans-serif;
     padding: 30px 0;
 }
-
+.mostrar{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    margin: 5% 0;
+}
+.img_frase{
+    width: 45%;
+    border: 1px solid #666666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+.img_frase hr{
+    width: 80%;
+    margin: auto;
+}
+.img_frase .frase p{
+    margin: 2% auto;
+}
+.frase h3{
+    text-align: center;
+    margin: 2% 0;
+}
+.img_frase img {
+    width: 80%;
+}
 .img_frase a {
-    margin: 2%;
+    margin: 5%;
     text-decoration: none;
     width: 150px;
     height: 35px;
     color: rgb(134, 184, 167);
     z-index: 1;
+    left: 10%;
     background: transparent;
     position: relative;
     font-size: 18px;
@@ -272,7 +303,7 @@ footer{
     height: 100%;
     width: 0;
     border-radius: 15px;
-    background-color: #212121;
+    background-color: #2f3d72;
     z-index: -1;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
@@ -289,133 +320,299 @@ footer{
 
 /* ---------------------------------------------------------------------------------FORMULARIO-------------------------------------------------------------------------- */
 
-.section{
+.formulario{
+    height: 92vh;
+    background-color: #2f3d72;
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    justify-content: center;
     font-family: Raleway, Helvetica, sans-serif;
 }
-.box{
+.login-box img{
     position: relative;
-    padding: 50px;
+    top: -90px;
+    left: -10px;
+}
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 30%;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #212121;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+.login-box h2 {
+    margin: -80px 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-style: italic;
+}
+.login-box .user-box {
+    position: relative;
+}
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #2f3d72;
+  font-size: 16px;
+}
+.login-box button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 30px;
+    font-weight: 550;
+    letter-spacing: 4px
+}
+.login-box button:hover {
+    background: #3954b4;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #3954b4,
+                0 0 25px #3954b4,
+                0 0 50px #3954b4,
+                0 0 100px #3954b4;
+}
+.login-box button div {
+    position: absolute;
+    display: block;
+}
+.login-box button div:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3954b4);
+    animation: btn-anim1 1s linear infinite;
+}
+  
+@keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,100% {
+      left: 100%;
+    }
+}
+.login-box button div:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #3954b4);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+}
+  
+@keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,100% {
+      top: 100%;
+    }
+}
+  
+.login-box button div:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #3954b4);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+}
+  
+@keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,100% {
+      right: 100%;
+    }
+}
+  
+.login-box button div:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #3954b4);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s
+}
+  
+@keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,100% {
+      bottom: 100%;
+    }
+}
+.loading-div{
+    width: 100%;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.2);
+    display: none;
 }
-.box::after{
-    content: '';
-    position: absolute;
-    top: 5px;
-    Left: 5px;
-    right: 5px;
-    bottom: 5px;
-    border-radius: 5px;
-    pointer-events: none;
-    background: linear-gradient(to bottom,rgba(255,255,255,0.3) 0%,
-    rgba(255,255,255,0.1) 15%, transparent 50%, transparent 85%, rgba(255,255,255,0.3) 100%);
-}
-.box .form{
+.spinner {
     position: relative;
-    width: 100%;
-}
-.box .form h1{
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-}
-.box .form .inputBox{
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
-.box .form .inputBox input{
-    width: 90%;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    background: transparent;
-    padding: 10px 5px 10px 40px;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 300;
-}
-.box .form .inputBox input::placeholder{
-    color: #cecece;
-}
-.box .form .inputBox i{
-    font-size: 25px;
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    transform: scale(0.7);
-    filter: invert(1);
-}
-.box .form .inputBox button {
-    border: none;
-    margin-top: 8%;
-    display: block;
-    position: relative;
-    padding: 0.7em 2.4em;
-    font-size: 16px;
-    background: transparent;
-    cursor: pointer;
-    user-select: none;
-    overflow: hidden;
-    color: #000;
-    z-index: 1;
-    font-family: inherit;
-    font-weight: 700;
+    width: 56px;
+    height: 56px;
+    animation: spinner-3a5251 1.25s infinite linear;
 }
    
-.box .form .inputBox button span {
+   .spinner div {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: -1;
-    border: 4px solid royalblue;
-}
-   
-.box .form .inputBox button span::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 8%;
-    height: 500%;
-    background: var(--lightgray);
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-60deg);
-    transition: all 0.3s;
-}
+    width: 0;
+    height: 0;
+    border-left: 3.6px solid transparent;
+    border-right: 3.6px solid transparent;
+    border-bottom: 10.8px solid #004dff;
+    transform-origin: center 10.8px;
+   }
    
-.box .form .inputBox button:hover span::before {
-    transform: translate(-50%, -50%) rotate(-90deg);
-    width: 100%;
-    background: royalblue;
-}
+   .spinner div:before,
+   .spinner div:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    display: block;
+    border-left: 10.8px solid transparent;
+    border-right: 10.8px solid transparent;
+    border-bottom: 7.2px solid #004dff;
+   }
    
-.box .form .inputBox button:hover {
-    color: white;
-}
+   .spinner div:before {
+    transform: translate(-10.8px, 7.2px) rotate(35deg);
+   }
    
-.box .form .inputBox button:active span::before {
-    background: #2751cd;
-}
-.box .form p{
+   .spinner div:after {
+    transform: translate(-10.8px, 7.2px) rotate(-35deg);
+   }
+   
+   .spinner div:nth-child(1) {
+    transform: translate(-50%, -10.8px) rotate(51.42857deg) translate(0, 320%);
+   }
+   
+   .spinner div:nth-child(2) {
+    transform: translate(-50%, -10.8px) rotate(102.85714deg) translate(0, 320%);
+   }
+   
+   .spinner div:nth-child(3) {
+    transform: translate(-50%, -10.8px) rotate(154.28571deg) translate(0, 320%);
+   }
+   
+   .spinner div:nth-child(4) {
+    transform: translate(-50%, -10.8px) rotate(205.71429deg) translate(0, 320%);
+   }
+   
+   .spinner div:nth-child(5) {
+    transform: translate(-50%, -10.8px) rotate(257.14286deg) translate(0, 320%);
+   }
+   
+   .spinner div:nth-child(6) {
+    transform: translate(-50%, -10.8px) rotate(308.57143deg) translate(0, 320%);
+   }
+   
+   .spinner div:nth-child(7) {
+    transform: translate(-50%, -10.8px) rotate(360deg) translate(0, 320%);
+   }
+   
+   @keyframes spinner-3a5251 {
+    to {
+     transform: rotate(360deg);
+    }
+   }
+/* ----------------------------------------------------------------------------------SOBRE MIM------------------------------------------------------------------------- */
+.section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #212121;
+    color: #fff;
+    width: 60%;
+    border-radius: 10px;
+    margin: 2% 0 0 0;
+    padding: 2%;
+  }
+  .section img{
+    width: 80%;
+  }
+  .section h2{
+    font-weight: 800;
+    margin: 2% 0;
+    font-size: 25px;
+    width: 80%;
     text-align: center;
-    font-weight: 600;
-    margin-top: 5%;
-    font-size: 16px;
-}
-.box .form{
+  }
+  .section p{
+    width: 80%;
+    font-size: 18px;
+  }
+  .sobre{
+    text-indent: 40px;
+    text-align: justify;
+    letter-spacing: 1px;
+  }
+  .section ul{
+    margin: 10% 0 2% 0;
+  }
+  .section ul li{
+    color: #2f3d72;
+    margin: 2% 0;
+  }
+  .section ul a{
+    border-bottom: 2px solid #2f3d72;
+    padding: 0;
+    color: #fff;
     text-decoration: none;
-}
+  }
+  .section ul li a:hover{
+    border: none;
+    opacity: 0.5;
+  }

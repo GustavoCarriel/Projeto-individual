@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="./js/funcoes.js"></script>
+    <title>Cadastro | CARRIEL</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="./assets/logo.png.opdownload" alt="" width="100px">
+            <ul>
+                <li><a href="index.html">Champions League 2022</a></li>
+                <li><a href="info-champions.html">Sobre UEFA</a></li>
+                <li><a href="sobre.html">Sobre mim</a></li>
+                <li><span>|</span></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="login.html" id="now">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="formulario">
+        <div class="login-box">
+            <img src="./assets/icons8-troféu-da-uefa-euro-100.png" alt="">
+            <h2>Login</h2>
+            <div class="user-box">
+                <input id="email_input" type="text">
+                <label>Email</label>
+            </div>
+            <div class="user-box">
+                <input id="senha_input" type="password">
+                <label>Senha</label>
+            </div>
+            <button onclick="entrar()">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                ENTRAR
+            </button>
+            <div id="div_aguardar" class="loading-div">
+                <div class="spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
