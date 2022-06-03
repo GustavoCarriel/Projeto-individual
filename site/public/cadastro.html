@@ -48,6 +48,17 @@
                 <input id="confirmacao_senha_input" type="password">
                 <label>Confirmação de Senha</label>
             </div>
+            <div class="user-box">
+                <select id="escolha_input">
+                    <option value="1">--Escolha um Jogador--</option>
+                    <option value="Benzema">Benzema</option>
+                    <option value="Salah">Salah</option>
+                    <option value="Mbappé">Mbappé</option>
+                    <option value="Lewandowski">Lewandowski</option>
+                    <option value="De Bruyne">De Bruyne</option>
+                </select>
+                <label>Escolha em quem você acha o melhor jogador da temporada</label>
+            </div>
             <button class="btn" onclick="cadastrar()">
                 <div></div>
                 <div></div>
@@ -81,8 +92,9 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var jogadorVar = escolha_input.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || jogadorVar == "" || jogadorVar == '1') {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -104,7 +116,8 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                jogadorServer: jogadorVar
             })
         }).then(function (resposta) {
 

@@ -337,7 +337,7 @@ footer{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30%;
+    width: 35%;
     padding: 40px;
     transform: translate(-50%, -50%);
     background: #212121;
@@ -357,16 +357,32 @@ footer{
 .login-box .user-box {
     position: relative;
 }
-.login-box .user-box input {
+.login-box .user-box input{
     width: 100%;
+    margin: 2% 0;
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #004dff;
+    outline: none;
+    background: rgba(73, 72, 72, 0.1);
+}
+.login-box .user-box select{
+    width: 100%;
+    margin: 5% 0;
+    padding: 5px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #004dff;
     outline: none;
     background: transparent;
+}
+.login-box .user-box option{
+    background: #000;
 }
 .login-box .user-box label {
     position: absolute;
@@ -379,11 +395,14 @@ footer{
     transition: .5s;
 }
 .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input:valid ~ label,
+.login-box .user-box select:focus ~ label,
+.login-box .user-box select:valid ~ label {
   top: -20px;
   left: 0;
-  color: #2f3d72;
-  font-size: 16px;
+  color: #fff;
+  font-size: 18px;
+  /* font-weight: 700; */
 }
 .login-box button {
     position: relative;

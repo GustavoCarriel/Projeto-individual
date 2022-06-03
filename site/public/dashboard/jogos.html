@@ -5,25 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dash.css">
+    <link rel="stylesheet" href="../css/menuH.css">
+    <script src="../js/funcoes.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>Jogos | CARRIEL</title>
 </head>
-<body>
-    <header>
-        <nav>
-            <h1>Carriel</h1>
-            <div class="mobile-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            <ul class="nav-list">
-                <li><a href="jogos.html">Jogos</a></li>
-                <li><a href="votacao.html">Votação</a></li>
-                <li><a href="#">Mural</a></li>
-            </ul>
-        </nav>
-    </header>
+<body onload="validarSessao(), atualizarFeed()">
+  <header>
+    <nav>
+        <h1>Carriel</h1>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="jogos.html">Jogos</a></li>
+            <li><a href="votacao.html">Votação</a></li>
+            <li><a href="#">Mural</a></li>
+            <li><a id="b_usuario">usuário</a></li>
+            <li><a onclick="limparSessao()">Sair <i class='bx bxs-exit'></i></a></li>
+        </ul>
+    </nav>
+</header>
     <main>
       <div class="section">
         <h2>JOGOS</h2>
@@ -34,7 +38,7 @@
                     <h3>Jogo da Memória</h3>
                     <hr>
                     <p>Jogo para você treinar sua memória com uma temática voltada para o Futebol Europeu.</p>
-                    <a href="jogo-memoria.html">Jogar <i class='bx bx-chevron-right'></i></a>
+                    <a href="../carregar/carregar.html">Jogar <i class='bx bx-chevron-right'></i></a>
                 </div>
             </div>
             <div class="img_frase">
@@ -43,7 +47,7 @@
                     <h3>Jogo da Velha</h3>
                     <hr>
                     <p>Jogo para você treinar seu raciocínio e vencer seus adversários.</p>
-                    <a href="jogo-da-velha.html">Jogar <i class='bx bx-chevron-right'></i></a>
+                    <a href="../carregar/carregar2.html">Jogar <i class='bx bx-chevron-right'></i></a>
                 </div>
             </div>
             <div class="img_frase">
@@ -52,15 +56,19 @@
                   <h3>Palavra Cruzada</h3>
                   <hr>
                   <p>Jogo cheio de perguntas para você testar seus conhecimentos sobre o futebol Europeu.</p>
-                  <a href="palavra-cruzada.html">Jogar <i class='bx bx-chevron-right'></i></a>
+                  <a href="../carregar/carregar3.html">Jogar <i class='bx bx-chevron-right'></i></a>
               </div>
             </div>
           </div>
       </div>
     </main>
+    <footer>Desenvolvido por Gustavo Almeida Carriel - SPTech</footer>
 </body>
 </html>
 <script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
     class MobileNavbar {
     constructor(mobileMenu, navList, navLinks) {
       this.mobileMenu = document.querySelector(mobileMenu);

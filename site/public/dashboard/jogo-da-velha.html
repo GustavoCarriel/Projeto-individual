@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/jv.css">
+    <link rel="stylesheet" href="../css/menuH.css">
     <script src="../js/jv.js"></script>
+    <script src="../js/funcoes.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>Jogo da velha | CARRIEL</title>
 </head>
-<body onload="initialize()">
+<body onload="initialize(), validarSessao(), atualizarFeed()">
   <header>
     <nav>
         <h1>Carriel</h1>
@@ -21,6 +24,8 @@
             <li><a href="jogos.html">Jogos</a></li>
             <li><a href="votacao.html">Votação</a></li>
             <li><a href="#">Mural</a></li>
+            <li><a id="b_usuario">usuário</a></li>
+            <li><a onclick="limparSessao()">Sair <i class='bx bxs-exit'></i></a></li>
         </ul>
     </nav>
 </header>
@@ -72,6 +77,9 @@
 
 <!-- SCRIPT PARA O MENU HAMBURGUER FUNCIONAR -->
 <script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
     class MobileNavbar {
     constructor(mobileMenu, navList, navLinks) {
       this.mobileMenu = document.querySelector(mobileMenu);
