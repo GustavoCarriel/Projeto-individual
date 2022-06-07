@@ -10,107 +10,86 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>Jogos | CARRIEL</title>
 </head>
-<body onload="validarSessao(), atualizarFeed()">
-  <header>
-    <nav>
-        <h1>Carriel</h1>
-        <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-        <ul class="nav-list">
-            <li><a href="jogos.html">Jogos</a></li>
-            <li><a href="votacao.html">Votação</a></li>
-            <li><a href="#">Mural</a></li>
-            <li><a id="b_usuario">usuário</a></li>
-            <li><a onclick="limparSessao()">Sair <i class='bx bxs-exit'></i></a></li>
-        </ul>
-    </nav>
-</header>
+<body>
+    <header>
+        <nav>
+            <h1>CARRIEL</h1>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="jogos.html">Jogos</a></li>
+                <li><a href="votacao.html">Votação</a></li>
+                <li><a href="mural.html">Mural</a></li>
+                <li>Olá<a id="b_usuario">Usuário</a></li>
+                <li><a onclick="limparSessao()">Sair <i class='bx bxs-exit'></i></a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-      <div class="section">
-        <h2>JOGOS</h2>
-          <div class="jogos">
-            <div class="img_frase">
-                <img src="../assets/jogo-da-memoria-foto.png" alt="">
-                <div class="frase">
-                    <h3>Jogo da Memória</h3>
-                    <hr>
-                    <p>Jogo para você treinar sua memória com uma temática voltada para o Futebol Europeu.</p>
-                    <a href="../carregar/carregar.html">Jogar <i class='bx bx-chevron-right'></i></a>
+        <div class="section">
+            <h2>Jogo</h2>
+            <div class="jogos">
+                <div class="img_frase">
+                    <img src="../assets/palavra-cruzada.png" alt="">
+                    <div class="frase">
+                        <h3>Palavra Cruzada</h3>
+                        <hr>
+                        <p>Jogo cheio de perguntas para você testar seus conhecimentos sobre o futebol Europeu.</p>
+                        <a href="../carregar/carregar.html">Jogar <i class='bx bx-chevron-right'></i></a></div>
                 </div>
             </div>
-            <div class="img_frase">
-                <img src="../assets/jogo-da-velha-foto.png" alt="">
-                <div class="frase">
-                    <h3>Jogo da Velha</h3>
-                    <hr>
-                    <p>Jogo para você treinar seu raciocínio e vencer seus adversários.</p>
-                    <a href="../carregar/carregar2.html">Jogar <i class='bx bx-chevron-right'></i></a>
-                </div>
-            </div>
-            <div class="img_frase">
-              <img src="" alt="">
-              <div class="frase">
-                  <h3>Palavra Cruzada</h3>
-                  <hr>
-                  <p>Jogo cheio de perguntas para você testar seus conhecimentos sobre o futebol Europeu.</p>
-                  <a href="../carregar/carregar3.html">Jogar <i class='bx bx-chevron-right'></i></a>
-              </div>
-            </div>
-          </div>
-      </div>
+        </div>
     </main>
-    <footer>Desenvolvido por Gustavo Almeida Carriel - SPTech</footer>
 </body>
 </html>
 <script>
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+class MobileNavbar {
+constructor(mobileMenu, navList, navLinks) {
+  this.mobileMenu = document.querySelector(mobileMenu);
+  this.navList = document.querySelector(navList);
+  this.navLinks = document.querySelectorAll(navLinks);
+  this.activeClass = "active";
 
-    class MobileNavbar {
-    constructor(mobileMenu, navList, navLinks) {
-      this.mobileMenu = document.querySelector(mobileMenu);
-      this.navList = document.querySelector(navList);
-      this.navLinks = document.querySelectorAll(navLinks);
-      this.activeClass = "active";
-  
-      this.handleClick = this.handleClick.bind(this);
-    }
-  
-    animateLinks() {
-      this.navLinks.forEach((link, index) => {
-        link.style.animation
-          ? (link.style.animation = "")
-          : (link.style.animation = `navLinkFade 0.5s ease forwards ${
-              index / 7 + 0.3
-            }s`);
-      });
-    }
-  
-    handleClick() {
-      this.navList.classList.toggle(this.activeClass);
-      this.mobileMenu.classList.toggle(this.activeClass);
-      this.animateLinks();
-    }
-  
-    addClickEvent() {
-      this.mobileMenu.addEventListener("click", this.handleClick);
-    }
-  
-    init() {
-      if (this.mobileMenu) {
-        this.addClickEvent();
-      }
-      return this;
-    }
+  this.handleClick = this.handleClick.bind(this);
+}
+
+animateLinks() {
+  this.navLinks.forEach((link, index) => {
+    link.style.animation
+      ? (link.style.animation = "")
+      : (link.style.animation = `navLinkFade 0.5s ease forwards ${
+          index / 7 + 0.3
+        }s`);
+  });
+}
+
+handleClick() {
+  this.navList.classList.toggle(this.activeClass);
+  this.mobileMenu.classList.toggle(this.activeClass);
+  this.animateLinks();
+}
+
+addClickEvent() {
+  this.mobileMenu.addEventListener("click", this.handleClick);
+}
+
+init() {
+  if (this.mobileMenu) {
+    this.addClickEvent();
   }
-  
-  const mobileNavbar = new MobileNavbar(
-    ".mobile-menu",
-    ".nav-list",
-    ".nav-list li",
-  );
-  mobileNavbar.init();
+  return this;
+}
+}
+
+const mobileNavbar = new MobileNavbar(
+".mobile-menu",
+".nav-list",
+".nav-list li",
+);
+mobileNavbar.init();
 </script>

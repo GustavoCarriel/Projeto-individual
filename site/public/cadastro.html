@@ -50,12 +50,12 @@
             </div>
             <div class="user-box">
                 <select id="escolha_input">
-                    <option value="1">--Escolha um Jogador--</option>
-                    <option value="Benzema">Benzema</option>
-                    <option value="Salah">Salah</option>
-                    <option value="Mbappé">Mbappé</option>
-                    <option value="Lewandowski">Lewandowski</option>
-                    <option value="De Bruyne">De Bruyne</option>
+                    <option value="0">--Escolha um Jogador--</option>
+                    <option value="1">Benzema</option>
+                    <option value="2">Salah</option>
+                    <option value="3">Mbappé</option>
+                    <option value="4">Lewandowski</option>
+                    <option value="5">De Bruyne</option>
                 </select>
                 <label>Escolha em quem você acha o melhor jogador da temporada</label>
             </div>
@@ -94,7 +94,7 @@
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
         var jogadorVar = escolha_input.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || jogadorVar == "" || jogadorVar == '1') {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || jogadorVar == "" || jogadorVar == '0') {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 

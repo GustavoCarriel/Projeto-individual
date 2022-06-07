@@ -36,12 +36,12 @@
         <!-- FRASE DE EFEITO E DE INICIO DO BANNER -->
         <div class="banner">
             <h1>Muito mais do que só um campeonato de futebol.</h1>
-            <h1>Essa é a <a href="dashboard.html"> Champions League</a> !!</h1>
+            <h1>Essa é a <a href="info-champions.html"> Champions League</a> !!</h1>
         </div>
     </div>
     <!-- ONDA PARA DAR UM EFEITO LEGAL E NÃO FICAR MUITO RETA A PAGINA (ONDA RETA) -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#2f3d72" fill-opacity="1" d="M0,288L1440,192L1440,320L0,320Z"></path>
+        <path fill="#212121" fill-opacity="1" d="M0,288L1440,192L1440,320L0,320Z"></path>
     </svg>
     <main>
         <!-- VIDEO PEGO DO YOUTUBE COM IFRAME -->
@@ -49,6 +49,7 @@
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
+            <hr>
         <section>
             <h1>Notícias</h1>
             <div class="noticia">
@@ -105,15 +106,16 @@
                 </div>
             </div>
         </section>
+        <hr>
         <h1>Artilheiro do Campeonato</h1>
         <div class="container-banner">
             <div class="container">
                 <p><b>Jogador: </b>Karim Benzema</p>
                 <p><b>Time: </b>Real Madrid</p>
                 <p><b>Posição: </b>Atacante</p>
-                <p><b>Gols: </b>14 gols</p>
-                <p><b>Chutes ao gol: </b>42 chutes</p>
-                <p><b>% passes completos: </b>83%</p>
+                <p><b>Gols: </b><span id="gol_span">14</span>gols</p>
+                <p><b>Chutes ao gol: </b><span id="chute_span">42</span>chutes</p>
+                <p><b>% de gols: </b><span id="media_span"></span></p>
             </div>
             <img src="./assets/benzema.png" alt="">
         </div>
@@ -122,3 +124,9 @@
 </body>
 
 </html>
+<script>
+    var chute = Number(chute_span.innerHTML);
+    var gol = Number(gol_span.innerHTML);
+
+    media_span.innerHTML = `${(chute * (gol / 100)).toFixed(2)}%`;
+</script>

@@ -19,7 +19,7 @@ body{
 
 /* -----------------------------------------------------------------------------------------MENU------------------------------------------------------------------------- */
 nav{
-    height: 8vh;
+    height: 10vh;
     background-color: #212121;
     display: flex;
     justify-content: space-around;
@@ -75,7 +75,7 @@ nav ul li a:hover{
 .container{
     width: 25%;
     border-radius: 20px;
-    background-color: #ffffff10;
+    background-color: rgba(255, 255, 255, 0.063);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     margin-bottom: 3%;
@@ -98,7 +98,7 @@ nav ul li a:hover{
     margin: 5% 8%;
 }
 .container b{
-    color: #000;
+    color: #2f3d72;
     font-size: 1.1vw;
 }
 .banner{
@@ -128,7 +128,7 @@ nav ul li a:hover{
     margin: auto;
 }
 section{
-    background-color: #212121;
+    /* background-color: #212121; */
     width: 90%;
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
@@ -139,12 +139,16 @@ svg{
     margin-bottom: -5px;
 }
 main{
-    background-color: #2f3d72;
+    background-color: #212121;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: Raleway, Helvetica, sans-serif;
     padding: 0 0 20px 0;
+}
+main hr{
+    width: 90%;
+    margin: 5% auto;
 }
 main .gusta{
     border-radius: 20px;
@@ -170,7 +174,7 @@ iframe{
     min-width: 900px;
     min-height: 500px;
     border-radius: 10px;
-    box-shadow: 0 0 20px #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 .container1{
     color: white;
@@ -242,7 +246,7 @@ main img{
 }
 footer{
     text-align: center;
-    background-color: #212121;
+    background-color: #2f3d72;
     color: #fff;
     font-family: Raleway, Helvetica, sans-serif;
     padding: 30px 0;

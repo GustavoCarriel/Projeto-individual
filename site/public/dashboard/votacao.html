@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/menuH.css">
     <title>Votação | CARRIEL</title>
 </head>
-<body onload="validarSessao(), atualizarFeed()">
+<body onload="validarSessao(), atualizacaoPeriodica()">
     <header>
         <nav>
             <h1>Carriel</h1>
@@ -23,8 +23,8 @@
             <ul class="nav-list">
                 <li><a href="jogos.html">Jogos</a></li>
                 <li><a href="votacao.html">Votação</a></li>
-                <li><a href="#">Mural</a></li>
-                <li><a id="b_usuario">usuário</a></li>
+                <li><a href="mural.html">Mural</a></li>
+                <li>Olá<a id="b_usuario">usuário</a></li>
                 <li><a onclick="limparSessao()">Sair <i class='bx bxs-exit'></i></a></li>
             </ul>
         </nav>
@@ -41,30 +41,49 @@
                 <tr>
                     <td>Benzema</td>
                     <td>Real Madrid</td>
-                    <td>0</td>
+                    <td class="card">
+                      <div class="temperatura">
+                        <p id="temp_aquario_1"></p>
+                    </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Salah</td>
                     <td>Liverpool</td>
-                    <td>0</td>
+                    <td class="card">
+                      <div class="temperatura">
+                        <p id="temp_aquario_2"></p>
+                    </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Mbappé</td>
                     <td>Paris Saint-Germain</td>
-                    <td>0</td>
+                    <td class="card">
+                      <div class="temperatura">
+                      <p id="temp_aquario_3"></p>
+                  </div>
+                </td>
                 </tr>
                 <tr>
                     <td>Lewandowski</td>
                     <td>Bayern de Munique</td>
-                    <td>0</td>
+                    <td class="card">
+                      <div class="temperatura">
+                        <p id="temp_aquario_4"></p>
+                    </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>De Bruyne</td>
                     <td>Manchester City</td>
-                    <td>0</td>
+                    <td class="card">
+                    <div class="temperatura">
+                        <p id="temp_aquario_5"></p>
+                    </div>
+                  </td>
                 </tr>
             </table>
-            <h2 style="text-align: center;">Votação</h2>
         </section>
     </main>
     <footer>Desenvolvido por Gustavo Almeida Carriel - SPTech</footer>
@@ -117,4 +136,109 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     ".nav-list li",
   );
   mobileNavbar.init();
+</script>
+
+
+<script>
+  function atualizacaoPeriodica() {
+        obterdados(1);
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
+        obterdados(5);
+
+        // function sendData() {
+        // 	var http = new XMLHttpRequest();
+        // 	http.open('POST', 'http://localhost:3000/api/sendData', false);
+        // 	http.send(null);
+        // }
+
+        setInterval(() => {
+            // sendData();
+        }, 2000);
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+    function obterdados(idJogador) {
+        fetch(`/medidas/tempo-real/${idJogador}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                          fkJogador: resposta[0].favorito,
+                        }
+
+                        alertar(resposta[0].fkJogador, idJogador);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function alertar(fkJogador, idJogador) {
+        var limites = {
+            muito_quente: 23,
+            quente: 22,
+            ideal: 20,
+            frio: 10,
+            muito_frio: 5
+        };
+
+        var classe_temperatura = 'cor-alerta';
+
+        if (fkJogador >= limites.muito_quente) {
+            classe_favorito = 'cor-alerta perigo-quente';
+            console.log("caiu no 1")
+        }
+        else if (fkJogador < limites.muito_quente && fkJogador >= limites.quente) {
+            classe_favorito = 'cor-alerta alerta-quente';
+            console.log("caiu no 2")
+        }
+        else if (fkJogador < limites.quente && fkJogador > limites.frio) {
+            classe_favorito = 'cor-alerta ideal';
+            console.log("caiu no 3")
+        }
+        else if (fkJogador <= limites.frio && fkJogador > limites.muito_frio) {
+            classe_favorito = 'cor-alerta alerta-frio';
+            console.log("caiu no 4")
+        }
+        else if (fkJogador < limites.min_favorito) {
+            classe_favorito = 'cor-alerta perigo-frio';
+            console.log("caiu no 5")
+        }
+
+        var card;
+
+        if (idJogador == 1) {
+            temp_aquario_1.innerHTML = fkJogador;
+            // card = card_1
+        }
+        else if (idJogador == 2) {
+            temp_aquario_2.innerHTML = fkJogador;
+            // card = card_2
+        } else if (idJogador == 3) {
+            temp_aquario_3.innerHTML = fkJogador;
+            // card = card_3
+        } else if (idJogador == 4) {
+            temp_aquario_4.innerHTML = fkJogador;
+            // card = card_4
+        } else if (idJogador == 5) {
+            temp_aquario_5.innerHTML = fkJogador;
+            // card = card_4
+        }
+
+        // alterando
+        // card.className = classe_temperatura;
+
+    }
 </script>
