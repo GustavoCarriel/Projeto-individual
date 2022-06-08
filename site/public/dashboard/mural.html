@@ -23,7 +23,7 @@
                 <li><a href="jogos.html">Jogos</a></li>
                 <li><a href="votacao.html">Votação</a></li>
                 <li><a href="mural.html">Mural</a></li>
-                <li>Olá<a id="b_usuario">Usuário</a></li>
+                <li>Olá <span id="b_usuario">Usuário</span></li>
                 <li><a onclick="limparSessao()">Sair <i class='bx bxs-exit'></i></a></li>
             </ul>
         </nav>
@@ -33,7 +33,7 @@
             <div class="dash-right">
                 <div class="avisos">
                     <div class="containerMural">
-                        <h1>Publicar um aviso</h1>
+                        <h1>Publicar uma mensagem</h1>
                         <div class="div-form">
                             <form id="form_postagem" method="post" onsubmit="return publicar()">
                                 <label>
@@ -57,7 +57,8 @@
                                 </button>
                             </form>
                         </div>
-                        <h1>Mural de Avisos</h1>
+                        <hr>
+                        <h1>Mural</h1>
                         <div class="div-results">
                             <div id="feed_container" class="feed-container">
                             </div>
@@ -243,7 +244,7 @@ mobileNavbar.init();
 
 
                         spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                        spanTitulo.innerHTML = "<br>Título: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
                         btnEditar.innerHTML = "Editar";

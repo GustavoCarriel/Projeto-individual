@@ -60,8 +60,7 @@ footer {
   background-color: #212121;
   color: #fff;
   padding: 30px 0;
-  position: absolute;
-  bottom: 0;
+  margin-top: 5%;
   width: 100%;
 }
 
@@ -74,25 +73,33 @@ table {
   border-collapse: collapse;
   width: 80%;
   empty-cells: hide;
+  margin: 5% 0;
 }
 th,
 td {
   padding: 15px;
   border-spacing: 10px;
 }
-th {
+td {
   height: 40px;
   text-align: left;
-  height: 40px;
   vertical-align: bottom;
+}
+td img{
+  width: 25px;
+  margin: 0 2%;
 }
 tr:nth-child(odd) {
   background: #333;
 }
 tr:nth-child(1) {
   font-weight: 800;
-  font-size: 20px;
+  font-size: 25px;
   background-color: black;
+}
+td:nth-child(2){
+  display: flex;
+  align-items: center;
 }
 
 .section {
@@ -158,6 +165,7 @@ tr:nth-child(1) {
 }
 .img_frase .frase p {
   margin: 2% auto;
+  display: flex;
 }
 .frase h3 {
   text-align: center;
@@ -223,6 +231,10 @@ i {
 .containerMural h1{
   margin: 5% 0;
 }
+.containerMural hr{
+  width: 900px;
+  margin: 8% auto;
+}
 .div-form{
   display: flex;
   flex-direction: column;
@@ -231,6 +243,7 @@ i {
 .div-form label, input, textarea{
   margin: 3% 0;
   font-size: 18px;
+  min-width: 500px;
 }
 input{
   width: 100%;
@@ -361,7 +374,20 @@ button div:nth-child(4) {
 .containerMural{
   text-align: center;
 }
-.div-results{
+.publicacao{
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 100%;
+  width: 800px;
+  margin: 10px auto;
+  padding: 20px;
+  color: #004dff;
+}
+.publicacao span{
+  margin: 10px;
+}
+.publicacao b{
+  color: #fff;
+}
+.publicacao button{
+  border: 1px solid #004dff;
+  margin: 5% 10px 2% 10px;
 }
