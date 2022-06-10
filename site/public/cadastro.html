@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script  type = "module"  src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> 
+    <script  nomodule  src = "https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="./js/funcoes.js"></script>
     <title>Cadastro | CARRIEL</title>
 </head>
@@ -42,10 +44,12 @@
             </div>
             <div class="user-box">
                 <input id="senha_input" type="password">
+                <ion-icon id="icone" onclick="ver()" name="eye-outline"></ion-icon>
                 <label>Senha</label>
             </div>
             <div class="user-box">
                 <input id="confirmacao_senha_input" type="password">
+                <ion-icon id="iconeC" onclick="verConfirme()" name="eye-outline"></ion-icon>
                 <label>Confirmação de Senha</label>
             </div>
             <div class="user-box">
@@ -77,11 +81,32 @@
                     <div></div>
                     </div>
             </div>
+            <p>Já possui cadastro? <a href="login.html">Login</a></p>
             <div id="div_erros_login"></div>
         </div>
     </div>
 </body>
 </html>
+<script>
+    function ver(){
+        if (senha_input.type == 'password') {
+            senha_input.type = 'text';
+            icone.name = 'eye-off-outline';
+        } else if (senha_input.type == 'text') {
+                senha_input.type = 'password';
+                icone.name = 'eye-outline';
+            }
+    }
+    function verConfirme(){
+        if (confirmacao_senha_input.type == 'password') {
+            confirmacao_senha_input.type = 'text';
+            iconeC.name = 'eye-off-outline';
+        } else if (confirmacao_senha_input.type == 'text') {
+                confirmacao_senha_input.type = 'password';
+                iconeC.name = 'eye-outline';
+            }
+    }
+</script>
 <script>
     function cadastrar() {
         aguardar();
